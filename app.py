@@ -20,7 +20,7 @@ mail = Mail(app)
 
 
 class LetterForm(FlaskForm):
-    file = FileField(validators=[DataRequired()])
+
     letter_text = TextAreaField('შენი წერილი', validators=[DataRequired()],
                               render_kw={"placeholder": "ძვირფასო სანტა,"})
     submit = SubmitField('გაგზავნა')
@@ -30,11 +30,12 @@ class LetterForm(FlaskForm):
 def home():
     form = LetterForm()
     if form.validate_on_submit():
-        session['filename']= secure_filename(form.file.data.filename)
-        form.file.data.save('static/uploads/' + session['filename'])
+
+
         session["letter_text"] = form.letter_text.data
         msg = Message('Future me', sender='papiashvil@gmail.com', recipients=['papiashvil@gmail.com'])
         msg.body = session["letter_text"]
+
 
         mail.send(msg)
         flash('შენი წერილი გაიგზავნა')
