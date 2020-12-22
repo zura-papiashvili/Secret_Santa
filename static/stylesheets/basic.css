@@ -8,6 +8,9 @@ body {
 .jumbotron{
   opacity: 0.9;
 }
+h1{
+  color: #a0318d
+}
 
 @media (max-width: 600px){
   body {
