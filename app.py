@@ -20,10 +20,10 @@ mail = Mail(app)
 
 
 class LetterForm(FlaskForm):
-    file = FileField()
-    letter_text = TextAreaField('Your Letter', validators=[DataRequired()],
+    file = FileField(validators=[DataRequired()])
+    letter_text = TextAreaField('შენი წერილი', validators=[DataRequired()],
                               render_kw={"placeholder": "ძვირფასო სანტა,"})
-    submit = SubmitField('Send')
+    submit = SubmitField('გაგზავნა')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -37,7 +37,7 @@ def home():
         msg.body = session["letter_text"]
 
         mail.send(msg)
-        flash('Your letter was sent')
+        flash('შენი წერილი გაიგზავნა')
         return redirect(url_for('report'))
 
     return render_template('home.html', form=form)
