@@ -41,7 +41,7 @@ def home():
         flash('შენი წერილი გაიგზავნა')
         return redirect(url_for('report'))
 
-    return render_template('home.html', form=form)
+    return render_template('home-test.html', form=form)
 
 
 @app.route('/report',methods=['GET','POST'])
