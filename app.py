@@ -22,7 +22,7 @@ app.config['SECRET_KEY'] = 'mysecretkey'
 class LetterForm(FlaskForm):
 
     letter_text = StringField('საიდუმლო კოდი', validators=[DataRequired()],
-                              render_kw={"placeholder": "*********,"})
+                              render_kw={"placeholder": "*********"})
     submit = SubmitField('შემდეგი დავალება')
 
 
