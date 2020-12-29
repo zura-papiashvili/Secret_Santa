@@ -4,30 +4,33 @@
 <div class="container">
 
     <h1 align="center" >Secret Santa</h1>
-<Br>
+    <Br>
     <div class="jumbotron">
-<div class="alert alert-warning" role="alert">
-  ჰოუ, ჰოუ, ჰოუ!!! ნანიკო მოხუც სანტას შენი დახმარება სჭირდება თავსატეხის ამოხსნაში. რადგან პლანეტებით და კოსმოსით ხარ დაინტერესებული არ გაგიჭირდება ჩემი დახმარება.
-</div>
-    <form method="POST" class="form-group" action="" enctype="multipart/form-data">
-        {{ form.hidden_tag() }}
-
-
-    <div class="form-group">
-
-     <h5>{{ form.letter_text.label(class="col-form-label") }}</h5>
-     {{ form.letter_text(class="form-control",rows="8") }}
-
-
-</div>
-
-    {{ form.submit(class="btn btn-primary mb-2") }}
-
-</form>
-    <div style="margin:auto; display:flex; flex-direction:column; height:500px; max-width:500px">
-        <iframe border="0" src="https://crosswordlabs.com/embed/the-planets" style="flex:1; width:100%; padding:5px 0px 0 5px; border:3px solid black; "></iframe>
+        <div class="alert alert-warning" role="alert">
+             ჰოუ, ჰოუ, ჰოუ!!! ნანიკო მოხუც სანტას შენი დახმარება სჭირდება თავსატეხის ამოხსნაში. რადგან პლანეტებით და კოსმოსით ხარ დაინტერესებული არ გაგიჭირდება ჩემი დახმარება.
+        </div>
     </div>
-</div>
+
+    <div class="jumbotron">
+        <div style="margin:auto; display:flex; flex-direction:column; height:700px; max-width:700px">
+            <iframe border="0" src="https://crosswordlabs.com/embed/the-planets" style="flex:1; width:100%; padding:5px 0px 0 5px; border:3px solid black; "></iframe>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <form method="POST" class="form-group" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <h5>{{ form.letter_text.label(class="col-form-label") }}</h5>
+                {{ form.letter_text(class="form-control") }}
+            </div>
+
+            {{ form.submit(class="btn btn-primary mb-2") }}
+
+        </form>
+    </div>
+
+
 
 </div>
 
