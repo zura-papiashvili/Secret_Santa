@@ -20,10 +20,10 @@ app.config['SECRET_KEY'] = 'mysecretkey'
 
 
 class LetterForm(FlaskForm):
-
+    file = FileField(validators=[DataRequired()])
     letter_text = StringField('საიდუმლო კოდი', validators=[DataRequired()],
-                              render_kw={"placeholder": "123456789"})
-    submit = SubmitField('შემდეგი დავალება')
+                              render_kw={"placeholder": "M**"})
+    submit = SubmitField('გაგზავნა')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -31,15 +31,16 @@ def home():
     form = LetterForm()
 
     if form.validate_on_submit():
-
+        session['filename'] = secure_filename(form.file.data.filename)
+        form.file.data.save('static/uploads/' + session['filename'])
 
         session["letter_text"] = form.letter_text.data
         # msg = Message('Future me', sender='papiashvil@gmail.com', recipients=['papiashvil@gmail.com'])
         code = session["letter_text"]
 
-        if code=='psevjnumm':
-            flash('ააწყვე ფაზლი და გამოიცანი მისი სახელი')
-            return redirect(url_for('puzzle'))
+        if code=='M16':
+            flash('ნანიკო შენ სწორად გამოიცანი ნისლეულის სახელი')
+            return redirect(url_for('report_2'))
         else:
             flash('პასუხი არასწორია')
 
@@ -50,6 +51,11 @@ def home():
 def report():
 
     return render_template('report.html')
+
+@app.route('/report_2',methods=['GET','POST'])
+def report_2():
+
+    return render_template('report_2.html')
 
 @app.route('/puzzle',methods=['GET','POST'])
 def puzzle():

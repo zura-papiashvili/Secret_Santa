@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<br>
+<div class="container">
+
+ {# get_flashed_messages() ავტომატურად იღებს flash()-ის პარამეტრებს #}
+<div class="jumbotron">
+     {% for msg in get_flashed_messages() %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{msg}}
+        </div>
+      {% endfor %}
+    <h1 align="center" style="color: black">როგორც კი ვნახავ აწყობილ ფაზლს, მიიღებ შენს საჩუქარს!!!</h1>
+
+</div>
+
+</div>
+
+{% endblock %}
